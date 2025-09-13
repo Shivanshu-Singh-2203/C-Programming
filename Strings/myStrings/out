@@ -1,0 +1,48 @@
+
+collect2: error: ld returned 1 exit status
+gcc -Wall -Wextra -std=c11 -o test mystring.o test-mystring.o
+make: *** [Makefile:13: test] Error 1
+test-mystring.c:(.text+0x2f1): undefined reference to `mystrtod'
+test-mystring.c:(.text+0x41a): undefined reference to `mystrcpy'
+test-mystring.c:(.text+0x47): undefined reference to `myisdigit'
+test-mystring.c:(.text+0x674): undefined reference to `mystrcmp'
+test-mystring.c:(.text+0x744): undefined reference to `mystrchr'
+test-mystring.c:(.text+0x9d2): undefined reference to `mymemcpy'
+test-mystring.c:(.text+0xb8d): undefined reference to `mystrerror'
+/usr/bin/ld: test-mystring.c:(.text+0x111): undefined reference to `myislower'
+/usr/bin/ld: test-mystring.c:(.text+0x144): undefined reference to `myisupper'
+/usr/bin/ld: test-mystring.c:(.text+0x162): undefined reference to `mytolower'
+/usr/bin/ld: test-mystring.c:(.text+0x180): undefined reference to `mytoupper'
+/usr/bin/ld: test-mystring.c:(.text+0x1b3): undefined reference to `myisspace'
+/usr/bin/ld: test-mystring.c:(.text+0x1e4): undefined reference to `myiscntrl'
+/usr/bin/ld: test-mystring.c:(.text+0x215): undefined reference to `myispunct'
+/usr/bin/ld: test-mystring.c:(.text+0x244): undefined reference to `myisprint'
+/usr/bin/ld: test-mystring.c:(.text+0x273): undefined reference to `myisgraph'
+/usr/bin/ld: test-mystring.c:(.text+0x359): undefined reference to `mystrtol'
+/usr/bin/ld: test-mystring.c:(.text+0x3a3): undefined reference to `mystrtoul'
+/usr/bin/ld: test-mystring.c:(.text+0x4b4): undefined reference to `mystrncpy'
+/usr/bin/ld: test-mystring.c:(.text+0x562): undefined reference to `mystrcat'
+/usr/bin/ld: test-mystring.c:(.text+0x605): undefined reference to `mystrncat'
+/usr/bin/ld: test-mystring.c:(.text+0x699): undefined reference to `mystrcmp'
+/usr/bin/ld: test-mystring.c:(.text+0x6c2): undefined reference to `mystrncmp'
+/usr/bin/ld: test-mystring.c:(.text+0x775): undefined reference to `mystrrchr'
+/usr/bin/ld: test-mystring.c:(.text+0x7a): undefined reference to `myisalpha'
+/usr/bin/ld: test-mystring.c:(.text+0x7b0): undefined reference to `mystrcspn'
+/usr/bin/ld: test-mystring.c:(.text+0x7eb): undefined reference to `mystrpbrk'
+/usr/bin/ld: test-mystring.c:(.text+0x826): undefined reference to `mystrspn'
+/usr/bin/ld: test-mystring.c:(.text+0x850): undefined reference to `mystrstr'
+/usr/bin/ld: test-mystring.c:(.text+0x8c6): undefined reference to `mystrtok'
+/usr/bin/ld: test-mystring.c:(.text+0x916): undefined reference to `mystrtok'
+/usr/bin/ld: test-mystring.c:(.text+0xa4e): undefined reference to `mymemmove'
+/usr/bin/ld: test-mystring.c:(.text+0xa92): undefined reference to `mymemcmp'
+/usr/bin/ld: test-mystring.c:(.text+0xaba): undefined reference to `mymemchr'
+/usr/bin/ld: test-mystring.c:(.text+0xab): undefined reference to `myisalnum'
+/usr/bin/ld: test-mystring.c:(.text+0xb02): undefined reference to `mymemset'
+/usr/bin/ld: test-mystring.c:(.text+0xde): undefined reference to `myisxdigit'
+/usr/bin/ld: test-mystring.o: in function `testCharFuncs':
+/usr/bin/ld: test-mystring.o: in function `testComparison':
+/usr/bin/ld: test-mystring.o: in function `testConversion':
+/usr/bin/ld: test-mystring.o: in function `testManipulation':
+/usr/bin/ld: test-mystring.o: in function `testMemory':
+/usr/bin/ld: test-mystring.o: in function `testOther':
+/usr/bin/ld: test-mystring.o: in function `testSearch':
