@@ -4,6 +4,7 @@
 #include <stdio.h>
 #define SIZE 10
 
+/* defining functions a and b */
 int ascending(int a, int b)
 {
 	return a < b;
@@ -14,6 +15,7 @@ int descending(int a, int b)
 	return a > b;
 }
 
+/* pointer parametrised swap function */
 void swap(int *element1, int* element2)
 {
 	int temp = *element1;

@@ -8,17 +8,28 @@ int main()
 {	int a = 7;
 	int *aPtr = &a; /* sets aPtr to be the address of a */ 
 
+	/* &a will be the address of aPtr
+	 * aPtr will be a pointer containing the address of a 
+	 */
+
 	printf("The address of a is %p"
 		"\nThe valus of aPtr is %p", &a, aPtr);
-	
+
+	/* array b is initiallised
+	 * the pointer bPtr will point to the first element of the array 
+	 */
+
 	int b[] = {10, 20, 30, 40};
 	int *bPtr = b; /* create bPtr and point it to array b */ 
 	puts("\nArray b printed with:\nArray index notation");
-
+	
 	for(unsigned i = 0; i < ARRAY_SIZE; i++)
 	{
 		printf("b[%u] = %d\n", i, b[i]);
 	}
+
+	/* here *(b+ %u) refers to the deferenced value of the pointer
+	 * at the address b + %u */
 
 	puts("\nPointer offfset notation.\nThe pointer is the array name");
 	for(unsigned j = 0; j < ARRAY_SIZE; j ++)
