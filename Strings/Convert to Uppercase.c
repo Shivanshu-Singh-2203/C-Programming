@@ -5,9 +5,9 @@ void convertToUppercase(char* str)
 {
     while(*str != '\0')
     {
-        if(65 <= *str && *str <= 90)
+        if(97 <= *str && *str <= 122)
         {
-            *str = *str + 32;
+            *str = *str - 32;
         }
         str++;
     }
