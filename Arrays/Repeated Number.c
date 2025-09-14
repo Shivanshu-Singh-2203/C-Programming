@@ -18,7 +18,7 @@ int main(void)
         if (digit_seen[digit])
             break;
 
-        digit_seen[digit] = true;   // ✅ fix here
+        digit_seen[digit] = true;   
         n /= 10;
     }
 
