@@ -7,7 +7,7 @@ void print(int* pointer, int size)
     {
         printf("%d ", *(pointer + i));
     } 
-    printf("\n"); // just to move to next line
+    printf("\n");
 }
 
 int main(void)
