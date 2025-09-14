@@ -22,11 +22,11 @@ int main(void)
     while (choice < 3) {
         (*f[choice])(choice);
         printf("Enter a number between 0 and 2, 3 to end : ");
-        scanf("%u", &choice); // ✅ fixed, removed \n
+        scanf("%u", &choice);
     }
 
     puts("Program terminated ...");
-    return 0; // ✅ good practice
+    return 0; 
 }
 
 /* function definitions */
