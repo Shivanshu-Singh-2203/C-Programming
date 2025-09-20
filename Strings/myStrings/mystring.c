@@ -1,326 +1,181 @@
-/**
- * mystring.c
- *
- * Custom implementations of C standard library functions.
- * All functions are prefixed with "my" to avoid conflicts.
- *
- * NOTE: Only mystrlen1 is fully implemented here.
- *       Other functions are left as stubs for you to implement.
- */
-
 #include "mystring.h"
+#include <stddef.h>
 
-/* ---------- Character handling ---------- */
-
-/**
- * @brief Check if character is a digit [0–9].
- * @param c character to check
- * @return nonzero if digit, 0 otherwise
- */
-int myisdigit(int c) {
-    // TODO: implement
-    return 0;
+/* ---------- String length ---------- */
+size_t mystrlen(const char *s) {
+    const char *temp = s;
+    while (*temp != '\0') temp++;
+    return temp - s;
 }
 
-/**
- * @brief Check if character is alphabetic [A–Z, a–z].
- */
-int myisalpha(int c) {
-    // TODO: implement
-    return 0;
-}
-
-/**
- * @brief Check if character is alphanumeric [0–9, A–Z, a–z].
- */
-int myisalnum(int c) {
-    // TODO: implement
-    return 0;
-}
-
-/**
- * @brief Check if character is a hexadecimal digit [0–9, a–f, A–F].
- */
-int myisxdigit(int c) {
-    // TODO: implement
-    return 0;
-}
-
-/**
- * @brief Check if character is lowercase.
- */
-int myislower(int c) {
-    // TODO: implement
-    return 0;
-}
-
-/**
- * @brief Check if character is uppercase.
- */
-int myisupper(int c) {
-    // TODO: implement
-    return 0;
-}
-
-/**
- * @brief Convert uppercase to lowercase, else return unchanged.
- */
-int mytolower(int c) {
-    // TODO: implement
-    return c;
-}
-
-/**
- * @brief Convert lowercase to uppercase, else return unchanged.
- */
-int mytoupper(int c) {
-    // TODO: implement
-    return c;
-}
-
-/**
- * @brief Check if character is a whitespace (space, tab, newline, etc.).
- */
-int myisspace(int c) {
-    // TODO: implement
-    return 0;
-}
-
-/**
- * @brief Check if character is a control character.
- */
-int myiscntrl(int c) {
-    // TODO: implement
-    return 0;
-}
-
-/**
- * @brief Check if character is punctuation.
- */
-int myispunct(int c) {
-    // TODO: implement
-    return 0;
-}
-
-/**
- * @brief Check if character is printable (including space).
- */
-int myisprint(int c) {
-    // TODO: implement
-    return 0;
-}
-
-/**
- * @brief Check if character has a graphical representation (not space).
- */
-int myisgraph(int c) {
-    // TODO: implement
-    return 0;
-}
-
-/* ---------- String conversion ---------- */
-
-/**
- * @brief Convert string to double.
- * @param nptr input string
- * @param endptr pointer to the character where conversion stopped
- */
-double mystrtod(const char *nptr, char **endptr) {
-    // TODO: implement
-    return 0.0;
-}
-
-/**
- * @brief Convert string to long.
- */
-long mystrtol(const char *nptr, char **endptr, int base) {
-    // TODO: implement
-    return 0;
-}
-
-/**
- * @brief Convert string to unsigned long.
- */
-unsigned long mystrtoul(const char *nptr, char **endptr, int base) {
-    // TODO: implement
-    return 0;
-}
-
-/* ---------- String manipulation ---------- */
-
-/**
- * @brief Copy string src into dest.
- */
-char *mystrcpy(char *dest, const char *src) {
-    // TODO: implement
+/* ---------- String copy ---------- */
+char* mystrcpy(char *dest, const char *src) {
+    char *temp = dest;
+    while (*src != '\0') *temp++ = *src++;
+    *temp = '\0';
     return dest;
 }
 
-/**
- * @brief Copy at most n characters from src into dest.
- */
-char *mystrncpy(char *dest, const char *src, size_t n) {
-    // TODO: implement
+char* mystrncpy(char *dest, const char *src, size_t n) {
+    size_t i = 0;
+    for (; i < n && src[i] != '\0'; i++) dest[i] = src[i];
+    for (; i < n; i++) dest[i] = '\0';
     return dest;
 }
 
-/**
- * @brief Append string src to the end of dest.
- */
-char *mystrcat(char *dest, const char *src) {
-    // TODO: implement
+/* ---------- String concatenation ---------- */
+char* mystrcat(char *dest, const char *src) {
+    char *temp = dest;
+    while (*temp != '\0') temp++;
+    while (*src != '\0') *temp++ = *src++;
+    *temp = '\0';
     return dest;
 }
 
-/**
- * @brief Append at most n characters from src to the end of dest.
- */
-char *mystrncat(char *dest, const char *src, size_t n) {
-    // TODO: implement
+char* mystrncat(char *dest, const char *src, size_t n) {
+    char *temp = dest;
+    while (*temp != '\0') temp++;
+    size_t i = 0;
+    while (*src != '\0' && i < n) {
+        *temp++ = *src++;
+        i++;
+    }
+    *temp = '\0';
     return dest;
 }
 
-/* ---------- Comparison ---------- */
-
-/**
- * @brief Compare two strings lexicographically.
- * @return 0 if equal, <0 if s1<s2, >0 if s1>s2
- */
+/* ---------- String comparison ---------- */
 int mystrcmp(const char *s1, const char *s2) {
-    // TODO: implement
-    return 0;
+    while (*s1 && (*s1 == *s2)) {
+        s1++;
+        s2++;
+    }
+    return (unsigned char)*s1 - (unsigned char)*s2;
 }
 
-/**
- * @brief Compare at most n characters of two strings.
- */
 int mystrncmp(const char *s1, const char *s2, size_t n) {
-    // TODO: implement
-    return 0;
+    size_t i = 0;
+    while (i < n && *s1 && (*s1 == *s2)) {
+        s1++;
+        s2++;
+        i++;
+    }
+    if (i == n) return 0;
+    return (unsigned char)*s1 - (unsigned char)*s2;
 }
 
-/* ---------- Search ---------- */
-
-/**
- * @brief Locate first occurrence of c in string s.
- */
-char *mystrchr(const char *s, int c) {
-    // TODO: implement
-    return NULL;
-}
-
-/**
- * @brief Get length of initial segment of s consisting of chars not in reject.
- */
-size_t mystrcspn(const char *s, const char *reject) {
-    // TODO: implement
-    return 0;
-}
-
-/**
- * @brief Locate first occurrence in s of any char from accept.
- */
-char *mystrpbrk(const char *s, const char *accept) {
-    // TODO: implement
-    return NULL;
-}
-
-/**
- * @brief Locate last occurrence of c in string s.
- */
-char *mystrrchr(const char *s, int c) {
-    // TODO: implement
-    return NULL;
-}
-
-/**
- * @brief Get length of initial segment of s consisting only of chars in accept.
- */
-size_t mystrspn(const char *s, const char *accept) {
-    // TODO: implement
-    return 0;
-}
-
-/**
- * @brief Locate first occurrence of substring needle in haystack.
- */
-char *mystrstr(const char *haystack, const char *needle) {
-    // TODO: implement
-    return NULL;
-}
-
-/**
- * @brief Tokenize string using delimiter characters.
- */
-char *mystrtok(char *str, const char *delim) {
-    // TODO: implement
-    return NULL;
-}
-
-/* ---------- Memory functions ---------- */
-
-/**
- * @brief Copy n bytes from src to dest.
- */
-void *mymemcpy(void *dest, const void *src, size_t n) {
-    // TODO: implement
-    return dest;
-}
-
-/**
- * @brief Move n bytes from src to dest (safe for overlap).
- */
-void *mymemmove(void *dest, const void *src, size_t n) {
-    // TODO: implement
-    return dest;
-}
-
-/**
- * @brief Compare n bytes of memory areas.
- */
-int mymemcmp(const void *s1, const void *s2, size_t n) {
-    // TODO: implement
-    return 0;
-}
-
-/**
- * @brief Locate first occurrence of c in memory area.
- */
-void *mymemchr(const void *s, int c, size_t n) {
-    // TODO: implement
-    return NULL;
-}
-
-/**
- * @brief Fill memory with constant byte.
- */
-void *mymemset(void *s, int c, size_t n) {
-    // TODO: implement
-    return s;
-}
-
-/* ---------- Other ---------- */
-
-/**
- * @brief Return string describing error number.
- */
-char *mystrerror(int errnum) {
- 	
-    return "Unknown error";
-}
-
-/**
- * @brief Get length of string s.
- * 
- * @param s pointer to null-terminated string
- * @return number of characters before '\0'
- */
-size_t mystrlen1(const char *s) {
-    /* Fully implemented */
-    size_t len = 0;
-    while (s && *s != '\0') {
-        len++;
+/* ---------- String search ---------- */
+char* mystrchr(const char *s, int c) {
+    while (*s) {
+        if (*s == (char)c) return (char*)s;
         s++;
     }
-    return len;
+    if (c == '\0') return (char*)s;
+    return NULL;
 }
+
+char* mystrrchr(const char *s, int c) {
+    char *last = NULL;
+    while (*s) {
+        if (*s == (char)c) last = (char*)s;
+        s++;
+    }
+    if (c == '\0') return (char*)s;
+    return last;
+}
+
+static int inString(const char *s, char c) {
+    while (*s) {
+        if (*s == c) return 1;
+        s++;
+    }
+    return 0;
+}
+
+size_t mystrcspn(const char *s, const char *reject) {
+    size_t count = 0;
+    while (*s && !inString(reject, *s)) {
+        count++;
+        s++;
+    }
+    return count;
+}
+
+size_t mystrspn(const char *s, const char *accept) {
+    size_t count = 0;
+    while (*s && inString(accept, *s)) {
+        count++;
+        s++;
+    }
+    return count;
+}
+
+char* mystrpbrk(const char *s1, const char *s2) {
+    while (*s1) {
+        if (inString(s2, *s1)) return (char*)s1;
+        s1++;
+    }
+    return NULL;
+}
+
+char* mystrstr(const char *haystack, const char *needle) {
+    if (*needle == '\0') return (char*)haystack;
+    for (; *haystack; haystack++) {
+        const char *h = haystack;
+        const char *n = needle;
+        while (*h && *n && *h == *n) {
+            h++;
+            n++;
+        }
+        if (*n == '\0') return (char*)haystack;
+    }
+    return NULL;
+}
+
+/* ---------- Tokenizer ---------- */
+char* mystrtok(char *str, const char *delim) {
+    static char *next = NULL;
+    if (str) next = str;
+    if (!next) return NULL;
+
+    char *start = next;
+    char *end = start;
+
+    while (*end) {
+        const char *d = delim;
+        int is_delim = 0;
+        while (*d) {
+            if (*end == *d) {
+                is_delim = 1;
+                break;
+            }
+            d++;
+        }
+        if (is_delim) {
+            *end = '\0';
+            next = end + 1;
+            return start;
+        }
+        end++;
+    }
+    next = NULL;
+    return start;
+}
+
+/* ---------- Character handling ---------- */
+int myisdigit(int c) { return c >= '0' && c <= '9'; }
+int myisalpha(int c) { return (c >= 'a' && c <= 'z') || (c >= 'A' && c <= 'Z'); }
+int myisalnum(int c) { return myisalpha(c) || myisdigit(c); }
+int myisxdigit(int c) {
+    return myisdigit(c) || (c >= 'a' && c <= 'f') || (c >= 'A' && c <= 'F');
+}
+int myislower(int c) { return c >= 'a' && c <= 'z'; }
+int myisupper(int c) { return c >= 'A' && c <= 'Z'; }
+int mytolower(int c) { return myisupper(c) ? c + 32 : c; }
+int mytoupper(int c) { return myislower(c) ? c - 32 : c; }
+int myisspace(int c) { return c == ' ' || (c >= 9 && c <= 13); }
+int myiscntrl(int c) { return (c >= 0 && c <= 31) || c == 127; }
+int myispunct(int c) { return myisprint(c) && !myisalnum(c) && c != ' '; }
+int myisprint(int c) { return c >= 32 && c <= 126; }
+int myisgraph(int c) { return c >= 33 && c <= 126; }
+
