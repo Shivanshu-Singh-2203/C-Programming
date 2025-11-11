@@ -1,15 +1,16 @@
 #include <stdio.h>
-#include <stdlib.h>
 
 int scoreOfString(char* s) {
     char* head = s;
     int score = 0;
-    while(*(head) != '\0'){
+    while(*(head + 1) != '\0'){
         int temp = *(head + 1) - *(head);
         if(temp < 0){
             score = score - temp;
         }
-        score += temp;
+        else {
+                score += temp;
+                }
         head ++;
     }
 
