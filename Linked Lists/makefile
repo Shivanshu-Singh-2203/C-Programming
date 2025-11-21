@@ -26,5 +26,5 @@ test: linkedlist.c test-linkedlist.c linkedlist.h
 # Clean rule
 clean:
 	@echo "🧹 Cleaning up..."
-	rm -f *.o test test-* a.out
+	rm -f *.o test test-linkedlist a.out
 
