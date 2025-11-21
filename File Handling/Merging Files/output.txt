@@ -1,5 +1,0 @@
-Hello from file 1.
-Hello from file 2.
-This is a sample text file.
-It has multiple lines.
-
