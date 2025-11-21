@@ -19,26 +19,6 @@ build : 4.o bigint.o list.o test-bigint.o
 
 mytest:
 	gcc list.o bigint.o -o mytest
-#####################
-# Do not edit below #
-#####################
-
-run: build
-	@echo "Running the program\n"
-	@$(PROJ_HOME)/$(NAME)
-
 clean:
-	rm -f $(NAME) run.log leaks.log *.o test-bigint t 
+	rm -f $(NAME)  *.o 
 
-tests: clean build
-	@echo 'Running local test-suite'
-	@$(TESTS_DIR)/verifier --proj-dir=$(PROJ_HOME) --proj-name=$(NAME) --tests-dir=$(TESTS_DIR)
-	@cat run.log
-	@echo 'Finished running all test cases'
-
-ltests: clean build
-	@echo 'Running valgrind for test-suite'
-	@echo 'Hang in tight ... while we test'
-	@$(TESTS_DIR)/leakcheck --proj-dir=$(PROJ_HOME) --proj-name=$(NAME) --tests-dir=$(TESTS_DIR)
-	@cat leaks.log
-	@echo 'Finished running valgrind on test cases'
