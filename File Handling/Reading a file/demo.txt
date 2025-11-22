@@ -1,0 +1,6 @@
+This is a demo text file.
+It has multiple lines.
+You can use it to test your file reading program.
+
+Line 4: Hello from C!
+Line 5: EOF will come after this.
