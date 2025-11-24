@@ -8,6 +8,7 @@ test-queue.o : test-queue.c
 
 test : test-queue.o queue.o 
 	gcc test-queue.o queue.o -o test
+	valgrind --leak-check=full ./test
 
 main.o : main.c
 	gcc -g -Werror -Wextra -c main.c -o main.o

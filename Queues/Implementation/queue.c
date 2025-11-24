@@ -59,9 +59,9 @@ int dequeue(Queue *q){
                 q->rear = NULL;
         }
         
+        free(temp);
         q->size --;
 
-        free(temp);
         return value;
 }
 
@@ -85,9 +85,9 @@ void displayhelper(Queue* q){
         int top = dequeue(q);
         printf("%d ", top);
 
-        display(q);
+        displayhelper(q);
         enqueue(q, top); 
-
+        
 }
 void  display(Queue* q){
         displayhelper(q);
@@ -113,28 +113,23 @@ void clear(Queue *q){
 }
 
 void freeQueue(Queue *q){
-        if(isEmpty(q)){
-                return;
+        Node* curr = q->front;
+        while(curr){
+                Node* next = curr->next;
+                free(curr);
+                curr = next;
         }
-
-        Node* temp = q->front;
-        dequeue(q);
-        return freeQueue(q);
+        free(q);
 }
 
 bool search(Queue *q, int data){
-        if(isEmpty(q)){
-                return false;
+        Node* curr = q->front;
+        while(curr){
+                if(curr->data == data){
+                        return true;
+                }
+                curr = curr->next;
         }
-
-        if(q->front->data == data){
-                return true;
-        }
-
-        Queue* temp = initQueue();
-        temp->front = q->front->next;
-        temp->rear = q->rear;
-        temp->size = q->size - 1;
-        return search(temp, data); 
+        return false;
 }
 
